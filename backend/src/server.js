@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongodb = require('mongodb').MongoClient;
-const bodyParser = require("body-parser");
+const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -11,7 +11,6 @@ app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 
 // DB Config
 const MONGO_URL = `${process.env.MONGO_URL}`;
-// console.log(process.env.MONGO_INITDB_ROOT_USERNAME);
 
 // Connect to MongoDB
 mongodb.connect(MONGO_URL, {
@@ -20,7 +19,7 @@ mongodb.connect(MONGO_URL, {
     useFindAndModify: false,
     useCreateIndex: true
 })
-    .then(() => console.log("MongoDB successfully connected"))
+    .then(() => console.log('MongoDB successfully connected'))
     .catch(err => console.log(err));
 
 const port = 8080;
