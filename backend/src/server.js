@@ -10,14 +10,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 
 // DB Config
-const MONGO_URL = `${process.env.MONGO_URL}`;
+const db = require('./config/keys').mongoURI;
 
 // Connect to MongoDB
-mongodb.connect(MONGO_URL, {
+mongodb.connect(db, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true
 })
     .then(() => console.log('MongoDB successfully connected'))
     .catch(err => console.log(err));
